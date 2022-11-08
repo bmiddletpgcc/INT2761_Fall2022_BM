@@ -1,0 +1,25 @@
+#!/bin/bash
+
+#Welcome message for the Directory Usage Tool.
+
+echo "This is the File Directory usage report tool. Version 1.0"
+sleep 1
+read -p "Please enter the absolute path of the directory you'd like usage stats for: " dir
+sleep 1
+read -p "Provide the output path for your report: " output
+sleep 1
+read -p "Provide a file name: " fileName
+
+#Report Generation
+touch $output/$fileName.txt
+echo "Directory Usage Report" > $output/$fileName.txt
+echo "This report was generated on $(date)" >> $output/$fileName.txt
+echo "Directory: $dir" >> $output/$fileName.txt
+echo "List of files" >> $output/$fileName.txt
+ls -l $dir >> $output/$fileName.txt
+du -sh $dir >> $output/$fileName.txt
+sleep 1
+
+#End of Script
+echo "Done. Report has been generated for $dir. Please check your home directory"
+
